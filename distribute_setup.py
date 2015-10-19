@@ -49,9 +49,9 @@ except ImportError:
             args = [quote(arg) for arg in args]
         return os.spawnl(os.P_WAIT, sys.executable, *args) == 0
 
-DEFAULT_VERSION = "0.6.38"
+DEFAULT_VERSION = "0.7.3"
 DEFAULT_URL = "http://pypi.python.org/packages/source/d/distribute/"
-SETUPTOOLS_FAKED_VERSION = "0.6c11"
+SETUPTOOLS_FAKED_VERSION = "0.7"
 
 SETUPTOOLS_PKG_INFO = """\
 Metadata-Version: 1.0
@@ -190,7 +190,7 @@ def download_setuptools(version=DEFAULT_VERSION, download_base=DEFAULT_URL,
     try:
         from urllib.request import urlopen
     except ImportError:
-        from urllib2 import urlopen
+        from urllib3 import urlopen
     tgz_name = "distribute-%s.tar.gz" % version
     url = download_base + tgz_name
     saveto = os.path.join(to_dir, tgz_name)
